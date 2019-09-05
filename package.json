@@ -1,0 +1,11 @@
+{
+  "name": "when-to-launch",
+  "version": "1.0.0",
+  "description": "API for When To Launch 2.0 events",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ferenc Forgacs @feriforgacs",
+  "license": "ISC"
+}
