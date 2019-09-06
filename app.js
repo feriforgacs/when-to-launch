@@ -61,11 +61,11 @@ app.get('/v1/today', errorHandlers.catchErrors(async (req, res) => {
 }));
 
 /**
- * Return all events for today
+ * Return all events for a selected date
+ * date format: YYYY-MM-DD
  */
 app.get('/v1/date/:date', errorHandlers.catchErrors(async (req, res) => {
   const date = new Date(req.params.date).toISOString();
-  console.log(date);
   const events = await Event.find({
     dateFrom: { $lte: date },
     dateTo: { $gte: date },
@@ -73,6 +73,16 @@ app.get('/v1/date/:date', errorHandlers.catchErrors(async (req, res) => {
     dateFrom: 1
   });
   res.json(events);
+}));
+
+/**
+ * Return all companies from the database
+ */
+app.get('/v1/companies', errorHandlers.catchErrors(async (req, res) => {
+  const companies = await Company.find().sort({
+    name: 1
+  });
+  res.json(companies);
 }));
 
 /**
