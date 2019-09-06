@@ -1,0 +1,49 @@
+[{
+  "name": "Amazon",
+  "url": "https://www.aboutamazon.com/"
+}, {
+  "name": "Adobe",
+  "url": "https://www.adobe.com"
+}, {
+  "name": "Apple",
+  "url": "https://www.apple.com"
+}, {
+  "name": "Atlassian",
+  "url": "https://www.atlassian.com/"
+}, {
+  "name": "Cloudflare",
+  "url": "https://www.cloudflare.com/"
+}, {
+  "name": "CES",
+  "url": "https://www.ces.tech/"
+}, {
+  "name": "Microsoft",
+  "url": "https://www.microsoft.com"
+}, {
+  "name": "Facebook",
+  "url": "https://facebook.com"
+}, {
+  "name": "UBER",
+  "url": "https://www.uber.com"
+}, {
+  "name": "Huawei",
+  "url": "https://www.huawei.com"
+}, {
+  "name": "Google",
+  "url": "https://about.google/"
+}, {
+  "name": "Mozilla",
+  "url": "https://www.mozilla.org/"
+}, {
+  "name": "Drift",
+  "url": "https://www.drift.com/"
+}, {
+  "name": "Shopify",
+  "url": "https://www.shopify.com/"
+}, {
+  "name": "Snap",
+  "url": "https://www.snap.com/"
+}, {
+  "name": "Other",
+  "url": "https://producthunt.com"
+}]
