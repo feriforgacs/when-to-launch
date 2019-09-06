@@ -10,7 +10,7 @@ const eventSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    trum: true,
+    trim: true,
     maxlength: 1000
   },
   url: {

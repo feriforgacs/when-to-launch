@@ -5,7 +5,7 @@ require('dotenv').config({
 const fs = require('fs');
 
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE);
+mongoose.connect(process.env.DATABASE, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 const Event = require('../models/Event');
@@ -15,6 +15,8 @@ const companies = JSON.parse(fs.readFileSync(__dirname + '/companies.json', 'utf
 const events = JSON.parse(fs.readFileSync(__dirname + '/events.json', 'utf-8'));
 
 async function loadCompanies(){
+  console.log("itt");
+  console.log(companies);
   try {
     await Company.insertMany(companies);
     console.log("Companies added!");
