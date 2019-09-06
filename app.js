@@ -11,6 +11,8 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 /**
  * Display basic info on homepage
  */
@@ -83,6 +85,43 @@ app.get('/v1/companies', errorHandlers.catchErrors(async (req, res) => {
     name: 1
   });
   res.json(companies);
+}));
+
+/**
+ * Return all events for a selected company
+ */
+app.get('/v1/events/company/:companyId', errorHandlers.catchErrors(async (req, res) => {
+  const events = await Event.find({
+    company: req.params.companyId
+  }).sort({
+    dateFrom: 1
+  });
+  res.json(events);
+}));
+
+/**
+ * Return all upcoming events for a selected company
+ */
+app.get('/v1/events/company/:companyId/upcoming', errorHandlers.catchErrors(async (req, res) => {
+  const events = await Event.find({
+    company: req.params.companyId,
+    dateTo: {
+      $gte: Date.now()
+    }
+  }).sort({
+    dateFrom: 1
+  });
+  res.json(events);
+}));
+
+/**
+ * Return all data for a selected event
+ */
+app.get('/v1/event/:eventId', errorHandlers.catchErrors(async (req, res) => {
+  const event = await Event.findOne({
+    _id: req.params.eventId
+  });
+  res.json(event);
 }));
 
 /**

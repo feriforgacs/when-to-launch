@@ -4,47 +4,344 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel='stylesheet', href='/css/style.min.css')
     title When To Launch - Events API 1.0
   body
-    h1 When To Launch - Events API 1.0
-    h2 Endpoints
-    ul
-      li
-        a(href='/v1/all' target='_blank')
-          strong /v1/all:
-        |  Returns all events from the database
+    #container
+      h1 When To Launch - Events API 1.0
+      h2 Endpoints
+      
+      .endpoint-block
+        .endpoint-block__header
+          p
+            a(href='/v1/all' target='_blank')
+              strong /v1/all
+              
+          p Return all events from the database
+        .endpoint-block__sample
+          p
+            strong Example output:
 
-      li
-        a(href='/v1/upcoming' target='_blank')
-          strong /v1/upcoming:
-        |  Returns all upcoming events from the database
+          pre
+            | [
+            |   {
+            |     "_id": "5d722cd41c9d4400008690ef",
+            |     "title": "Event title",
+            |     "description": "Event description",
+            |     "url": "https://event.url",
+            |     "dateFrom": "2018-08-29T19:24:16.313Z",
+            |     "dateTo": "2018-09-29T19:24:16.313Z",
+            |     "company": {
+            |       "_id": "5d72277323358f0ba32803c3",
+            |       "name": "Amazon",
+            |       "url": "https://www.amazon.com/"
+            |     }
+            |   },
+            |   {
+            |     "_id": "5d722f9d1c9d4400008690f0",
+            |     "title": "This event is happening today",
+            |     "description": "Event description",
+            |     "url": "https://event.url",
+            |     "dateFrom": "2019-09-06T00:00:00.000Z",
+            |     "dateTo": "2019-09-06T23:59:16.313Z",
+            |     "company": {
+            |       "_id": "5d72277323358f0ba32803c3",
+            |       "name": "Amazon",
+            |       "url": "https://www.amazon.com/"
+            |     }
+            |   },
+            |   {
+            |     "_id": "5d7227d91c9d4400008690ec",
+            |     "title": "Event title",
+            |     "description": "Event description",
+            |     "url": "https://event.url",
+            |     "dateFrom": "2019-09-20T19:24:16.313Z",
+            |     "dateTo": "2019-09-29T19:24:16.313Z",
+            |     "company": {
+            |       "_id": "5d72277323358f0ba32803c3",
+            |       "name": "Amazon",
+            |       "url": "https://www.amazon.com/"
+            |     }
+            |   },
+            |   {
+            |     "_id": "5d722cb71c9d4400008690ee",
+            |     "title": "Event title",
+            |     "description": "Event description",
+            |     "url": "https://event.url",
+            |     "dateFrom": "2019-09-29T19:24:16.313Z",
+            |     "dateTo": "2019-10-29T19:24:16.313Z",
+            |     "company": {
+            |       "_id": "5d72277323358f0ba32803c3",
+            |       "name": "Amazon",
+            |       "url": "https://www.amazon.com/"
+            |     }
+            |   }
+            | ]
+          
+      .endpoint-block
+        .endpoint-block__header
+          p
+            a(href='/v1/upcoming' target='_blank')
+              strong /v1/upcoming
+          p Return all upcoming events from the database
+        .endpoint-block__sample
+          p
+            strong Example output:
+          pre
+            | [
+            |   {
+            |     "_id": "5d722f9d1c9d4400008690f0",
+            |     "title": "This event is happening today",
+            |     "description": "Event description",
+            |     "url": "https://event.url",
+            |     "dateFrom": "2019-09-06T00:00:00.000Z",
+            |     "dateTo": "2019-09-06T23:59:16.313Z",
+            |     "company": {
+            |       "_id": "5d72277323358f0ba32803c3",
+            |       "name": "Amazon",
+            |       "url": "https://www.amazon.com/"
+            |     }
+            |   },
+            |   {
+            |     "_id": "5d7227d91c9d4400008690ec",
+            |     "title": "Event title",
+            |     "description": "Event description",
+            |     "url": "https://event.url",
+            |     "dateFrom": "2019-09-20T19:24:16.313Z",
+            |     "dateTo": "2019-09-29T19:24:16.313Z",
+            |     "company": {
+            |       "_id": "5d72277323358f0ba32803c3",
+            |       "name": "Amazon",
+            |       "url": "https://www.amazon.com/"
+            |     }
+            |   },
+            |   {
+            |     "_id": "5d722cb71c9d4400008690ee",
+            |     "title": "Event title",
+            |     "description": "Event description",
+            |     "url": "https://event.url",
+            |     "dateFrom": "2019-09-29T19:24:16.313Z",
+            |     "dateTo": "2019-10-29T19:24:16.313Z",
+            |     "company": {
+            |       "_id": "5d72277323358f0ba32803c3",
+            |       "name": "Amazon",
+            |       "url": "https://www.amazon.com/"
+            |     }
+            |   }
+            | ]
 
-      li
-          a(href='/v1/today' target='_blank')
-            strong /v1/today:
-          |  Returns all events for today
+        .endpoint-block
+          .endpoint-block__header
+            p
+              a(href='/v1/today' target='_blank')
+                strong /v1/today
+            p Return all events for today
 
-      li
-          a(href='/v1/date/:date' target='_blank')
-            strong /v1/date/:date:
-          |  Returns all events for a selected date (date format: YYYY-MM-DD)
+          .endpoint-block__sample
+            p
+              strong Example output:
+            pre
+              | [
+              |     {
+              |       "_id": "5d722f9d1c9d4400008690f0",
+              |       "title": "This event is happening today",
+              |       "description": "Event description",
+              |       "url": "https://event.url",
+              |       "dateFrom": "2019-09-06T00:00:00.000Z",
+              |       "dateTo": "2019-09-06T23:59:16.313Z",
+              |       "company": {
+              |         "_id": "5d72277323358f0ba32803c3",
+              |         "name": "Amazon",
+              |         "url": "https://www.amazon.com/"
+              |       }
+              |     }
+              | ]
+        
+        .endpoint-block
+          .endpoint-block__header
+            p
+              a(href='/v1/date/:date' target='_blank')
+                strong /v1/date/:date
+            p Return all events for a selected date (date format: YYYY-MM-DD, eg.: 2019-09-06)
+          
+          .endpoint-block__sample
+            p
+              strong Example output:
+            pre
+              | [
+              |     {
+              |       "_id": "5d722f9d1c9d4400008690f0",
+              |       "title": "This event is happening today",
+              |       "description": "Event description",
+              |       "url": "https://event.url",
+              |       "dateFrom": "2019-09-06T00:00:00.000Z",
+              |       "dateTo": "2019-09-06T23:59:16.313Z",
+              |       "company": {
+              |         "_id": "5d72277323358f0ba32803c3",
+              |         "name": "Amazon",
+              |         "url": "https://www.amazon.com/"
+              |       }
+              |     }
+              | ]
 
-      li
-        a(href='/v1/companies' target='_blank')
-          strong /v1/companies:
-        |  Returns all companies from the database
+        .endpoint-block
+          .endpoint-block__header
+            p 
+              a(href='/v1/companies' target='_blank')
+                strong /v1/companies
+            p Return all companies from the database
 
-      li
-        a(href='/v1/company/:company-id' target='_blank')
-          strong /v1/company/:company-id:
-        |  Returns all events for a selected company
+          .endpoint-block__sample
+            p
+              strong Example output:
+            pre
+              | [
+              |   {
+              |     "_id": "5d7245201c9d4400008690f1",
+              |     "name": "Adobe",
+              |     "url": "https://adobe.com"
+              |   },
+              |   {
+              |     "_id": "5d72277323358f0ba32803c3",
+              |     "name": "Amazon",
+              |     "url": "https://www.amazon.com/"
+              |   },
+              |   {
+              |     "_id": "5d72467a1c9d4400008690f3",
+              |     "name": "Google",
+              |     "url": "https://google.com"
+              |   }
+              | ]
 
-      li
-        a(href='/v1/company/:company-id/upcoming' target='_blank')
-          strong /v1/company/:company-id/upcoming:
-        |  Returns all upcoming events for a selected company
+        .endpoint-block
+          .endpoint-block__header
+            p
+              a(href='/v1/events/company/:companyId' target='_blank')
+                strong /v1/events/company/:companyId
+            p Return all events for a selected company
 
-      li
-        a(href='/v1/event/:event-id' target='_blank')
-          strong /v1/event/:event-id:
-        |  Returns all data for a selected event
+          .endpoint-block__sample
+            p
+              strong Example output: 
+            pre
+              | [
+              |   {
+              |     "_id": "5d722f9d1c9d4400008690f0",
+              |     "title": "This event is happening today",
+              |     "description": "Event description",
+              |     "url": "https://event.url",
+              |     "dateFrom": "2019-09-06T00:00:00.000Z",
+              |     "dateTo": "2019-09-06T23:59:16.313Z",
+              |     "company": {
+              |       "_id": "5d72277323358f0ba32803c3",
+              |       "name": "Amazon",
+              |       "url": "https://www.amazon.com/"
+              |     }
+              |   },
+              |   {
+              |     "_id": "5d7227d91c9d4400008690ec",
+              |     "title": "Event title",
+              |     "description": "Event description",
+              |     "url": "https://event.url",
+              |     "dateFrom": "2019-09-20T19:24:16.313Z",
+              |     "dateTo": "2019-09-29T19:24:16.313Z",
+              |     "company": {
+              |       "_id": "5d72277323358f0ba32803c3",
+              |       "name": "Amazon",
+              |       "url": "https://www.amazon.com/"
+              |     }
+              |   },
+              |   {
+              |     "_id": "5d722cb71c9d4400008690ee",
+              |     "title": "Event title",
+              |     "description": "Event description",
+              |     "url": "https://event.url",
+              |     "dateFrom": "2019-09-29T19:24:16.313Z",
+              |     "dateTo": "2019-10-29T19:24:16.313Z",
+              |     "company": {
+              |       "_id": "5d72277323358f0ba32803c3",
+              |       "name": "Amazon",
+              |       "url": "https://www.amazon.com/"
+              |     }
+              |   }
+              | ]
+
+        .endpoint-block
+          .endpoint-block__header
+            p
+              a(href='/v1/events/company/:companyId/upcoming' target='_blank')
+                strong /v1/events/company/:companyId/upcoming
+            p Return all upcoming events for a selected company
+
+          .endpoint-block__sample
+            p
+              strong Example output: 
+            pre
+              | [
+              |   {
+              |     "_id": "5d722f9d1c9d4400008690f0",
+              |     "title": "This event is happening today",
+              |     "description": "Event description",
+              |     "url": "https://event.url",
+              |     "dateFrom": "2019-09-06T00:00:00.000Z",
+              |     "dateTo": "2019-09-06T23:59:16.313Z",
+              |     "company": {
+              |       "_id": "5d72277323358f0ba32803c3",
+              |       "name": "Amazon",
+              |       "url": "https://www.amazon.com/"
+              |     }
+              |   },
+              |   {
+              |     "_id": "5d7227d91c9d4400008690ec",
+              |     "title": "Event title",
+              |     "description": "Event description",
+              |     "url": "https://event.url",
+              |     "dateFrom": "2019-09-20T19:24:16.313Z",
+              |     "dateTo": "2019-09-29T19:24:16.313Z",
+              |     "company": {
+              |       "_id": "5d72277323358f0ba32803c3",
+              |       "name": "Amazon",
+              |       "url": "https://www.amazon.com/"
+              |     }
+              |   },
+              |   {
+              |     "_id": "5d722cb71c9d4400008690ee",
+              |     "title": "Event title",
+              |     "description": "Event description",
+              |     "url": "https://event.url",
+              |     "dateFrom": "2019-09-29T19:24:16.313Z",
+              |     "dateTo": "2019-10-29T19:24:16.313Z",
+              |     "company": {
+              |       "_id": "5d72277323358f0ba32803c3",
+              |       "name": "Amazon",
+              |       "url": "https://www.amazon.com/"
+              |     }
+              |   }
+              | ]
+        
+        .endpoint-block
+          .endpoint-block__header
+            p
+              a(href='/v1/event/:eventId' target='_blank')
+                strong /v1/event/:eventId
+            p Return all data for a selected event
+          
+          .endpoint-block__sample
+            p
+              strong Example output:
+            pre
+              | [
+              |     {
+              |       "_id": "5d722f9d1c9d4400008690f0",
+              |       "title": "This event is happening today",
+              |       "description": "Event description",
+              |       "url": "https://event.url",
+              |       "dateFrom": "2019-09-06T00:00:00.000Z",
+              |       "dateTo": "2019-09-06T23:59:16.313Z",
+              |       "company": {
+              |         "_id": "5d72277323358f0ba32803c3",
+              |         "name": "Amazon",
+              |         "url": "https://www.amazon.com/"
+              |       }
+              |     }
+              | ]
