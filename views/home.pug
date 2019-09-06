@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 html(lang="en")
   head
     meta(charset="UTF-8")
@@ -9,31 +10,41 @@ html(lang="en")
     h2 Endpoints
     ul
       li
-        a(href='/all' target='_blank')
-          strong /all:
+        a(href='/v1/all' target='_blank')
+          strong /v1/all:
         |  Returns all events from the database
 
       li
-        a(href='/upcoming' target='_blank')
-          strong /upcoming:
+        a(href='/v1/upcoming' target='_blank')
+          strong /v1/upcoming:
         |  Returns all upcoming events from the database
 
       li
-        a(href='/companies' target='_blank')
-          strong /companies:
+          a(href='/v1/today' target='_blank')
+            strong /v1/today:
+          |  Returns all events for today
+
+      li
+          a(href='/v1/date/:date' target='_blank')
+            strong /v1/date/:date:
+          |  Returns all events for a selected date (date format: YYYY.MM.DD)
+
+      li
+        a(href='/v1/companies' target='_blank')
+          strong /v1/companies:
         |  Returns all companies from the database
 
       li
-        a(href='/company/:company-id' target='_blank')
-          strong /company/:company-id:
+        a(href='/v1/company/:company-id' target='_blank')
+          strong /v1/company/:company-id:
         |  Returns all events for a selected company
 
       li
-        a(href='/company/:company-id/upcoming' target='_blank')
-          strong /company/:company-id/upcoming:
+        a(href='/v1/company/:company-id/upcoming' target='_blank')
+          strong /v1/company/:company-id/upcoming:
         |  Returns all upcoming events for a selected company
 
       li
-        a(href='/event/:event-id' target='_blank')
-          strong /event/:event-id:
+        a(href='/v1/event/:event-id' target='_blank')
+          strong /v1/event/:event-id:
         |  Returns all data for a selected event

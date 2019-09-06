@@ -19,8 +19,20 @@ const eventSchema = new mongoose.Schema({
     maxlength: 300
   },
   dateFrom: Date,
-  dateTo: Date
+  dateTo: Date,
+  company: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Company'
+  }
 });
+
+function autoPopulate(next){
+  this.populate('company');
+  next();
+}
+
+eventSchema.pre('find', autoPopulate);
+eventSchema.pre('findOne', autoPopulate);
 
 eventSchema.plugin(mongodbErrorHandler);
 module.exports = mongoose.model('Event', eventSchema);
