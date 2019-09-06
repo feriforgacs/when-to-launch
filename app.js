@@ -31,6 +31,19 @@ app.get('/v1/all/', errorHandlers.catchErrors(async (req, res) => {
 }));
 
 /**
+ * Return upcoming events from the database
+ */
+app.get('/v1/upcoming', errorHandlers.catchErrors(async (req, res) => {
+  const events = await Event.find({
+    $or: [
+      { dateFrom: { $gte: Date.now() } },
+      { dateTo: { $gte: Date.now() } }
+    ]
+  });
+  res.json(events);
+}));
+
+/**
  * Error handling
  */
 app.use(errorHandlers.notFound);
