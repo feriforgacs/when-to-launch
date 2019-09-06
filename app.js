@@ -26,7 +26,9 @@ app.get('/', (req, res) => {
  * Return all events from the database
  */
 app.get('/v1/all/', errorHandlers.catchErrors(async (req, res) => {
-  const events = await Event.find();
+  const events = await Event.find().sort({
+    dateFrom: 1
+  });
   res.json(events);
 }));
 
@@ -39,6 +41,36 @@ app.get('/v1/upcoming', errorHandlers.catchErrors(async (req, res) => {
       { dateFrom: { $gte: Date.now() } },
       { dateTo: { $gte: Date.now() } }
     ]
+  }).sort({
+    dateFrom: 1
+  });
+  res.json(events);
+}));
+
+/**
+ * Return all events for today
+ */
+app.get('/v1/today', errorHandlers.catchErrors(async (req, res) => {
+  const events = await Event.find({
+    dateFrom: { $lte: Date.now() },
+    dateTo: { $gte: Date.now() }
+  }).sort({
+    dateFrom: 1
+  });
+  res.json(events);
+}));
+
+/**
+ * Return all events for today
+ */
+app.get('/v1/date/:date', errorHandlers.catchErrors(async (req, res) => {
+  const date = new Date(req.params.date).toISOString();
+  console.log(date);
+  const events = await Event.find({
+    dateFrom: { $lte: date },
+    dateTo: { $gte: date },
+  }).sort({
+    dateFrom: 1
   });
   res.json(events);
 }));
