@@ -1,0 +1,39 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title When To Launch - Events API 1.0
+  body
+    h1 When To Launch - Events API 1.0
+    h2 Endpoints
+    ul
+      li
+        a(href='/all' target='_blank')
+          strong /all:
+        |  Returns all events from the database
+
+      li
+        a(href='/upcoming' target='_blank')
+          strong /upcoming:
+        |  Returns all upcoming events from the database
+
+      li
+        a(href='/companies' target='_blank')
+          strong /companies:
+        |  Returns all companies from the database
+
+      li
+        a(href='/company/:company-id' target='_blank')
+          strong /company/:company-id:
+        |  Returns all events for a selected company
+
+      li
+        a(href='/company/:company-id/upcoming' target='_blank')
+          strong /company/:company-id/upcoming:
+        |  Returns all upcoming events for a selected company
+
+      li
+        a(href='/event/:event-id' target='_blank')
+          strong /event/:event-id:
+        |  Returns all data for a selected event

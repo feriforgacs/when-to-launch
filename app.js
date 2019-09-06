@@ -1,12 +1,13 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 app.get('/', (req, res) => {
-  const data = {
-    variable: 'value'
-  }
-  res.json(data);
+  res.render('home');
 });
 
 module.exports = app;
